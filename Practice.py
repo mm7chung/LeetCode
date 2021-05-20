@@ -4,9 +4,11 @@ paths = [
     "root/a 1.txt(abcd) 2.txt(efgh)",
     "root/c 3.txt(abcd)",
     "root/c/d 4.txt(efgh)",
-    "root 4.txt(efgh)"
+    "root 4.txt(efgh)",
+    "root/2342 aaa.txt(fsefsefes)",
 ]
 
+    
 def findContent(fileAndContentString):
     return fileAndContentString[fileAndContentString.find("(") + 1:fileAndContentString.find(")")]
 
@@ -27,17 +29,30 @@ def parseFileAndContentsFromString(string):
     return tuples
 
 
-fileContentTuples = []
-for path in paths:
-    fileContentTuples.extend(parseFileAndContentsFromString(path))
+class Solution(object):
+    def findDuplicate(self, paths):
+        fileContentTuples = []
+        for path in paths:
+            fileContentTuples.extend(parseFileAndContentsFromString(path))
 
-print(fileContentTuples)
-multimap = defaultdict(list)
 
-for fileName, content in fileContentTuples:
-    multimap[content].append(fileName)
+        multimap = defaultdict(list)
 
-print(multimap)
+        for fileName, content in fileContentTuples:
+            multimap[content].append(fileName[:fileName.find("(")])
+
+
+        listofLists = []
+
+        for content, listOfPaths in multimap.items():
+            if len(listOfPaths) == 1:
+                continue
+            listofLists.append(listOfPaths)
+    
+        return listofLists
+
+
+
 
 
 # pathsDictionary = {
@@ -61,20 +76,5 @@ print(multimap)
 # print(myString * 4)
 
 
-def deduplicateFiles(mapPathToContent):
-    multimap = defaultdict(list)
-
-    for fileName, content in pathsDictionary.items():
-        multimap[content].append(fileName)
-
-    return multimap
-
-def findDuplicate(paths):
-    for path in paths:
-        break
-        # print(path)
-    return
-
-
 if __name__ == "__main__":
-    findDuplicate(paths)
+    print(Solution().findDuplicate(paths))
