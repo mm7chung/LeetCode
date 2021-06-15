@@ -28,6 +28,10 @@ def parseFileAndContentsFromString(string):
         tuples.append((fileAndContent, findContent(fileAndContent)))
     return tuples
 
+def filePathAndContent(vector):
+    for vector < 50:
+        
+
 
 class Solution(object):
     def findDuplicate(self, paths):

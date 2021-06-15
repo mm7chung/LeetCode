@@ -1,0 +1,9 @@
+We want to simulate a deck of cards
+
+1-13 H C S D
+
+- First we want to build a deck of cards 1-13C,D,H,S
+
+- Shuffle Randomly
+
+- Sort the deck again
